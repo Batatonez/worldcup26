@@ -273,17 +273,15 @@
   const where = document.getElementById("where");
   if (IMG.wood) stage.classList.add("wood");
 
-  let single = false;
-  let k = 0; // dupla atual (modo livro)
-  let i = 0; // lado atual (modo uma página)
+  let k = 0; // dupla aberta: 0 = capa, LAST_SPREAD = contracapa
   let busy = false;
 
   function clearDynamic() {
     book.querySelectorAll(".side, .leaf").forEach((e) => e.remove());
   }
 
+  // Fechado, o livro fica centralizado sobre a capa (ou contracapa).
   function shiftFor(spread) {
-    if (single) return 0;
     if (spread === 0) return -425;
     if (spread === LAST_SPREAD) return 425;
     return 0;
@@ -291,71 +289,33 @@
 
   function render() {
     clearDynamic();
-    stage.classList.toggle("single", single);
-    if (single) {
-      book.classList.remove("closed-front", "closed-back");
-      book.appendChild(buildSide(i, "only"));
-    } else {
-      const L = 2 * k - 1, R = 2 * k;
-      if (L >= 0) book.appendChild(buildSide(L, "l"));
-      if (R < SIDES.length) book.appendChild(buildSide(R, "r"));
-      book.classList.toggle("closed-front", k === 0);
-      book.classList.toggle("closed-back", k === LAST_SPREAD);
-    }
+    const L = 2 * k - 1, R = 2 * k;
+    if (L >= 0) book.appendChild(buildSide(L, "l"));
+    if (R < SIDES.length) book.appendChild(buildSide(R, "r"));
+    book.classList.toggle("closed-front", k === 0);
+    book.classList.toggle("closed-back", k === LAST_SPREAD);
     book.style.setProperty("--shift", shiftFor(k) + "px");
     updateUi();
   }
 
-  function pageLabel(idx) {
-    const key = SIDES[idx];
-    if (key === "cover") return "Capa";
-    if (key === "back") return "Contracapa";
-    if (typeof key !== "number") return "Verso da capa";
-    return "Página " + key;
-  }
-
   function updateUi() {
-    if (single) {
-      prevBtn.disabled = i === 0;
-      nextBtn.disabled = i === SIDES.length - 1;
-      where.textContent = pageLabel(i);
-    } else {
-      prevBtn.disabled = k === 0;
-      nextBtn.disabled = k === LAST_SPREAD;
-      const L = 2 * k - 1, R = 2 * k;
-      const keys = [SIDES[L], SIDES[R]].filter((x) => typeof x === "number");
-      where.textContent = k === 0 ? "Capa" : k === LAST_SPREAD ? "Contracapa" :
-        keys.length === 2 ? `Páginas ${keys[0]}–${keys[1]}` : keys.length ? `Página ${keys[0]}` : "Verso da capa";
-    }
+    prevBtn.disabled = k === 0;
+    nextBtn.disabled = k === LAST_SPREAD;
+    const L = 2 * k - 1, R = 2 * k;
+    const keys = [SIDES[L], SIDES[R]].filter((x) => typeof x === "number");
+    where.textContent = k === 0 ? "Capa" : k === LAST_SPREAD ? "Contracapa" :
+      keys.length === 2 ? `Páginas ${keys[0]}–${keys[1]}` : keys.length ? `Página ${keys[0]}` : "Verso da capa";
     const sel = document.getElementById("jump");
-    const cur = single ? i : 2 * k;
     let best = "";
-    [...sel.options].forEach((o) => { if (o.value !== "" && +o.value <= Math.max(cur, 1) + (single ? 0 : 0)) best = o.value; });
+    [...sel.options].forEach((o) => { if (o.value !== "" && +o.value <= Math.max(2 * k, 1)) best = o.value; });
     sel.value = best;
   }
 
   function flip(dir) {
     if (busy) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (single) {
-      const ni = i + dir;
-      if (ni < 0 || ni >= SIDES.length) return;
-      if (reduce) { i = ni; render(); return; }
-      busy = true;
-      const leaf = h("div", "leaf " + (dir > 0 ? "fwd" : "bwd"));
-      const front = buildSide(dir > 0 ? i : ni);
-      const back = h("div", "side back");
-      leaf.append(front, back, h("div", "shade"));
-      if (dir > 0) {
-        book.querySelector(".side.only").replaceWith(buildSide(ni, "only"));
-      }
-      book.appendChild(leaf);
-      leaf.addEventListener("animationend", (e) => { if (e.target === leaf) { i = ni; busy = false; render(); } });
-      return;
-    }
     const nk = k + dir;
     if (nk < 0 || nk > LAST_SPREAD) return;
-    if (reduce) { k = nk; render(); return; }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { k = nk; render(); return; }
     busy = true;
     book.classList.remove("closed-front", "closed-back");
     book.style.setProperty("--shift", shiftFor(nk) + "px");
@@ -377,32 +337,24 @@
 
   function gotoSide(idx) {
     if (busy) return;
-    if (single) i = idx; else k = spreadOfSide(idx);
+    k = spreadOfSide(idx);
     render();
   }
 
-  /* ---------- escala e modo ---------- */
+  /* ---------- escala: sempre as duas páginas ---------- */
   function fit() {
-    const wasSingle = single;
     const W = stage.clientWidth, H = stage.clientHeight;
-    single = W < 760;
-    if (single !== wasSingle) {
-      if (single) i = k === 0 ? 0 : k === LAST_SPREAD ? SIDES.length - 1 : 2 * k - 1;
-      else k = spreadOfSide(i);
-    }
-    const bw = single ? 850 : 1700;
-    const s = single ? Math.min((W - 28) / (bw + 32), (H - 24) / 1060) : Math.min((W - 150) / (bw + 32), (H - 70) / 1060);
-    wrap.style.transform = `translate(${(-bw * s) / 2}px, ${(-1000 * s) / 2 - 6}px) scale(${s})`;
-    const edge = (bw * s) / 2;
-    if (single) {
-      prevBtn.style.left = "8px"; nextBtn.style.right = "8px";
-      prevBtn.style.removeProperty("right"); nextBtn.style.removeProperty("left");
+    const narrow = W < 760;
+    const s = narrow ? Math.min((W - 12) / 1732, (H - 16) / 1060) : Math.min((W - 150) / 1732, (H - 70) / 1060);
+    wrap.style.transform = `translate(${-850 * s}px, ${(-1000 * s) / 2 - 4}px) scale(${s})`;
+    const edge = 850 * s;
+    if (narrow) {
+      prevBtn.style.left = "4px";
+      nextBtn.style.left = `calc(100% - 44px)`;
     } else {
       prevBtn.style.left = `calc(50% - ${edge + 66}px)`;
       nextBtn.style.left = `calc(50% + ${edge + 14}px)`;
-      nextBtn.style.removeProperty("right");
     }
-    if (single !== wasSingle) render();
   }
 
   /* ---------- seleção de figurinhas ---------- */
@@ -480,7 +432,7 @@
 
   fit();
   const start = fromHash();
-  if (start != null) { if (single) i = start; else k = spreadOfSide(start); }
+  if (start != null) k = spreadOfSide(start);
   render();
   paintSelection();
 })();

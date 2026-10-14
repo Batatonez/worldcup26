@@ -16,7 +16,7 @@
   background-color: #5b3d27;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='140'%3E%3Cg fill='none' stroke='%234d331f' stroke-width='2' opacity='.55'%3E%3Cpath d='M0 20 C150 8 300 32 600 18'/%3E%3Cpath d='M0 58 C200 70 380 44 600 60'/%3E%3Cpath d='M0 96 C120 88 420 110 600 94'/%3E%3Cpath d='M0 128 C260 120 330 138 600 126'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 600px 140px;
-  touch-action: pan-y;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 .stage.wood { background-image: url(../img/wood.jpg); background-size: cover; }
 .stage {
@@ -30,7 +30,6 @@
   perspective: 2600px;
   perspective-origin: 50% 20%;
 }
-.single .book-wrap { width: 850px; }
 .book {
   position: absolute; inset: 0;
   transform-style: preserve-3d;
@@ -48,16 +47,12 @@
 }
 .board.l { left: -16px; right: 50%; border-radius: 6px 0 0 6px; }
 .board.r { left: 50%; right: -16px; border-radius: 0 6px 6px 0; }
-.single .board.l { display: none; }
-.single .board.r { left: -16px; border-radius: 6px; }
 .closed-front .board.l, .closed-back .board.r { visibility: hidden; }
 
 /* Bloco de páginas (espessura) */
 .block { position: absolute; top: 0; bottom: 0; transform: translateZ(-1.5px); background: #ece7da; box-shadow: 0 3px 0 #d8d1c0, 0 6px 0 #c9c1ae; }
 .block.l { left: 0; right: 50%; }
 .block.r { left: 50%; right: 0; }
-.single .block.l { display: none; }
-.single .block.r { left: 0; }
 .closed-front .block.l, .closed-back .block.r { visibility: hidden; }
 
 .side {
@@ -68,13 +63,12 @@
 }
 .side.l { left: 0; }
 .side.r { left: 850px; }
-.single .side.r, .single .side.only { left: 0; }
 
 /* Dobra central */
 .side.l::after, .side.r::after { content: ""; position: absolute; top: 0; bottom: 0; width: 26px; pointer-events: none; z-index: 5; }
 .side.l::after { right: 0; background: rgba(0,0,0,.10); box-shadow: inset -8px 0 0 rgba(0,0,0,.06); }
 .side.r::after { left: 0; background: rgba(0,0,0,.08); box-shadow: inset 8px 0 0 rgba(0,0,0,.05); }
-.single .side::after, .side.cover::after { display: none; }
+.side.cover::after { display: none; }
 
 /* Folha que vira */
 .leaf {
@@ -83,7 +77,6 @@
   transform-style: preserve-3d;
   z-index: 10;
 }
-.single .leaf { left: 0; }
 .leaf .side { left: 0; transform: none; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .leaf .side.back { transform: rotateY(180deg); }
 .leaf .shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 6; }
@@ -111,7 +104,7 @@
 
 .album-bar {
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  padding: 16px 0; font-size: 15px; color: var(--ink-2);
+  padding-top: 16px; padding-bottom: 16px; font-size: 15px; color: var(--ink-2);
 }
 .album-bar strong { color: var(--ink); }
 .album-bar .btn { margin-left: auto; }
@@ -211,7 +204,7 @@
 .inside { position: absolute; inset: 0; background: #1b1d21; color: #c9c9cf; display: grid; place-items: center; text-align: center; font: 600 26px/1.3 var(--display); letter-spacing: .1em; text-transform: uppercase; }
 
 @media (max-width: 759px) {
-  .stage { height: min(132vw, 78vh); min-height: 0; }
+  .stage { height: max(64vw, 250px); min-height: 0; }
   .turn { width: 40px; height: 40px; margin-top: -20px; background: rgba(255,255,255,.8); }
   .turn svg { width: 18px; height: 18px; }
   .album-tools { margin-left: 0; width: 100%; }
