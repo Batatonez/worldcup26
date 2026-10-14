@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trocas e reembolso · figurinhas26copa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="favicon.svg" alt=""><span>figurinhas26copa</span></a>
+    <nav>
+      <a href="./" class="hide-sm">Loja</a>
+      <a href="album.html">Álbum</a>
+      <a href="carrinho.html" class="cart-link">Carrinho <span class="cart-count" data-n="0">0</span></a>
+    </nav>
+  </div>
+</header>
+<main class="doc">
+<h1>Trocas e reembolso</h1>
+<p class="updated">Atualizado em 14 de outubro de 2026</p>
+<div class="callout"><strong>Grave um vídeo ao abrir a encomenda.</strong> O vídeo precisa mostrar o pacote ainda fechado, a abertura e o conteúdo, sem cortes. Sem esse vídeo, não há troca nem reembolso por item faltante, trocado ou danificado.</div>
+
+<h2>Prazo de 7 dias</h2>
+<p>Você pode desistir da compra em até 7 dias corridos após o recebimento, como garante o artigo 49 do Código de Defesa do Consumidor. Avise a gente dentro desse prazo por <span data-contact></span>, com o número do pedido.</p>
+
+<h2>Condições</h2>
+<ul>
+<li>As figurinhas devem voltar no mesmo estado em que foram entregues: sem colar, sem dobrar e sem marcas.</li>
+<li>Danos causados pelo cliente não são aceitos para troca ou reembolso.</li>
+<li>Danos ocorridos no transporte não são aceitos como motivo de reembolso. Antes de assinar o recebimento, confira a embalagem. Se ela estiver violada, recuse a entrega ou registre a ocorrência com a transportadora.</li>
+<li>Reclamações de item faltante, trocado ou danificado só são analisadas com o vídeo da abertura.</li>
+</ul>
+
+<h2>Frete</h2>
+<ul>
+<li>O frete pago na compra não é reembolsado.</li>
+<li>O frete de devolução é pago pelo cliente.</li>
+</ul>
+
+<h2>Como recebe o dinheiro</h2>
+<p>Depois que o produto chega e é conferido, devolvemos o valor dos itens pelo mesmo meio usado no pagamento, em até 10 dias úteis.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="mark" aria-hidden="true">figurinhas26copa</p>
+    <nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Trocas e reembolso</a></nav>
+    <p>Loja independente de revenda de figurinhas colecionáveis. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA ou por qualquer seleção. Marcas e nomes citados pertencem aos seus titulares e aparecem só para identificar os produtos.</p>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script>
+document.querySelectorAll("[data-contact]").forEach(function (el) {
+  var s = window.STORE, parts = [];
+  if (s.contactEmail) parts.push('<a href="mailto:' + s.contactEmail + '">' + s.contactEmail + '</a>');
+  if (s.contactWhatsapp) parts.push('WhatsApp ' + s.contactWhatsapp);
+  el.innerHTML = parts.length ? parts.join(" · ") : "os canais de atendimento informados no seu pedido";
+});
+</script>
+</body>
+</html>

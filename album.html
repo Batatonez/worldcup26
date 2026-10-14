@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Álbum capa dura · figurinhas26copa</title>
+<meta name="description" content="Folheie o álbum da Copa do Mundo 2026 e escolha as figurinhas que faltam na sua coleção.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/album.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="favicon.svg" alt=""><span>figurinhas26copa</span></a>
+    <nav>
+      <a href="./" class="hide-sm">Loja</a>
+      <a href="album.html" aria-current="page">Álbum</a>
+      <a href="carrinho.html" class="cart-link">Carrinho <span class="cart-count" data-n="0">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap album-head">
+    <div>
+      <h1>Edição brasileira · capa dura</h1>
+      <p>Toque nas figurinhas que você quer. Elas vão direto para o carrinho.</p>
+    </div>
+    <div class="album-tools">
+      <label for="jump" class="hint">Ir para</label>
+      <select id="jump"></select>
+    </div>
+  </div>
+
+  <section class="stage" id="stage" aria-label="Álbum aberto sobre a mesa">
+    <div class="book-wrap" id="bookWrap">
+      <div class="book" id="book">
+        <div class="board l"></div><div class="board r"></div>
+        <div class="block l"></div><div class="block r"></div>
+      </div>
+    </div>
+    <button class="turn" id="prev" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="turn" id="next" aria-label="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </section>
+
+  <div class="wrap album-bar">
+    <span id="where">Capa</span>
+    <span>·</span>
+    <span><strong id="selCount">0 figurinhas</strong> selecionadas · <strong id="selTotal">R$ 0,00</strong></span>
+    <a class="btn" href="carrinho.html">Ver carrinho</a>
+  </div>
+  <div class="wrap hint">Use as setas do teclado ou deslize para virar as páginas.</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="mark" aria-hidden="true">figurinhas26copa</p>
+    <nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Trocas e reembolso</a></nav>
+    <p>Loja independente de revenda de figurinhas colecionáveis. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA ou por qualquer seleção. Marcas e nomes citados pertencem aos seus titulares e aparecem só para identificar os produtos.</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/images.js"></script>
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/album.js"></script>
+</body>
+</html>

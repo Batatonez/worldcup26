@@ -1,0 +1,56 @@
+.hero { padding-top: 88px; padding-bottom: 72px; }
+.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+.prices { padding-top: 40px; }
+.price-list { margin: 28px 0 0; display: grid; gap: 3px; border-radius: 20px; overflow: hidden; }
+.price-list div { display: grid; grid-template-columns: 180px 1fr; align-items: baseline; gap: 16px; padding: 20px 28px; background: var(--surface); }
+.price-list dt { font: 800 56px/1 var(--display); letter-spacing: -0.02em; }
+.price-list dd { margin: 0; font-size: 19px; }
+
+.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; margin: 160px 0 28px; }
+.sec-head p { margin: 0; color: var(--ink-2); }
+
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.grp { background: var(--surface); border-radius: var(--radius); padding: 14px 8px 8px; }
+.team {
+  display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 10px;
+  color: var(--ink); font-size: 15px; transition: background-color .15s ease;
+}
+.team:hover { text-decoration: none; background: var(--hover); }
+.team img { width: 32px; height: 24px; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); flex: none; }
+.team small { margin-left: auto; color: var(--ink-2); font-size: 12px; }
+.group-label { font-size: 13px; font-weight: 600; color: var(--ink-2); padding: 0 10px 6px; }
+
+.prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.prod { background: var(--surface); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+.prod .art { height: 220px; position: relative; overflow: hidden; }
+.prod .art b { position: absolute; left: 28px; bottom: 18px; font: 800 120px/.8 var(--display); letter-spacing: -0.03em; }
+.prod .art i { position: absolute; right: 28px; top: 22px; font: 700 26px/1 var(--display); font-style: normal; }
+.prod .art::after { content: ""; position: absolute; right: -40px; bottom: -60px; width: 260px; height: 260px; background: var(--b2); clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%); }
+.prod .body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.prod h3 { font-size: 21px; }
+.prod p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.prod .row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; }
+.prod .row strong { font-size: 21px; }
+.tone-silver .art { background: #c3c7cc; color: #1d1d1f; --b2: #a9aeb4; }
+.tone-gold .art { background: #c9a227; color: #1d1d1f; --b2: #b38d17; }
+.tone-us .art { background: #0a3161; color: #fff; --b2: #b31942; }
+.tone-ch .art { background: #d52b1e; color: #fff; --b2: #a61f15; }
+
+.how ol { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.how li { color: var(--ink-2); font-size: 17px; }
+.how li b { color: var(--ink); display: block; font-size: 21px; margin-bottom: 6px; letter-spacing: -0.02em; }
+.how { margin-top: 160px; }
+
+@media (max-width: 820px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-list div { grid-template-columns: 100px 1fr; padding: 16px 20px; }
+  .price-list dt { font-size: 40px; }
+  .price-list dd { font-size: 16px; }
+  .prod-grid, .how ol { grid-template-columns: 1fr; }
+  .hero { padding-top: 56px; padding-bottom: 48px; }
+  .sec-head { margin-top: 96px; }
+  .how { margin-top: 96px; }
+  .how ol { gap: 24px; }
+}
+@media (max-width: 480px) { .team-grid { grid-template-columns: 1fr; } }

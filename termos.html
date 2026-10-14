@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Termos de uso · figurinhas26copa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="favicon.svg" alt=""><span>figurinhas26copa</span></a>
+    <nav>
+      <a href="./" class="hide-sm">Loja</a>
+      <a href="album.html">Álbum</a>
+      <a href="carrinho.html" class="cart-link">Carrinho <span class="cart-count" data-n="0">0</span></a>
+    </nav>
+  </div>
+</header>
+<main class="doc">
+<h1>Termos de uso</h1>
+<p class="updated">Atualizado em 14 de outubro de 2026</p>
+<p>Estes termos valem para quem navega ou compra na figurinhas26copa. Ao fazer um pedido, você concorda com eles.</p>
+
+<div class="callout"><strong>Loja independente.</strong> Revendemos figurinhas e álbuns colecionáveis originais. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA, por confederações ou seleções. Nomes, marcas e imagens pertencem aos seus titulares e aparecem só para identificar os produtos.</div>
+
+<h2>1. Produtos</h2>
+<p>Vendemos figurinhas avulsas e coleções completas. As imagens e os slots do álbum na loja servem para você localizar cada figurinha pelo número. A figurinha enviada é a do código escolhido.</p>
+<p>Os produtos são colecionáveis. Pequenas variações de centralização, corte e brilho fazem parte da fabricação e não são defeito.</p>
+
+<h2>2. Pedidos e preços</h2>
+<ul>
+<li>Os preços estão em reais e podem mudar sem aviso. Vale o preço exibido no momento do pedido.</li>
+<li>O frete não está incluso no valor dos produtos. Ele é calculado e cobrado à parte.</li>
+<li>O pedido só é confirmado depois do pagamento. Se algum item acabar antes disso, avisamos e devolvemos o valor correspondente.</li>
+</ul>
+
+<h2>3. Dados do comprador</h2>
+<p>Você precisa informar nome completo, CPF válido, e-mail, celular e endereço de entrega. Os dados devem ser verdadeiros e do comprador. Pedidos com dados inconsistentes podem ser cancelados.</p>
+
+<h2>4. Entrega</h2>
+<ul>
+<li>Enviamos pelos Correios ou por Uber Flash, conforme a opção escolhida e a disponibilidade na sua região.</li>
+<li>O prazo começa a contar depois da confirmação do pagamento e da postagem.</li>
+<li>Confira o endereço antes de finalizar. Reenvios por endereço incorreto têm novo frete.</li>
+</ul>
+
+<h2>5. Trocas e reembolso</h2>
+<p>As regras estão na <a href="reembolso.html">política de trocas e reembolso</a>, que faz parte destes termos.</p>
+
+<h2>6. Uso do site</h2>
+<p>Não é permitido copiar o conteúdo do site para fins comerciais, tentar burlar preços ou usar o site para fraudes. Podemos recusar ou cancelar pedidos nesses casos.</p>
+
+<h2>7. Contato</h2>
+<p>Fale com a gente por <span data-contact></span>.</p>
+
+<h2>8. Lei aplicável</h2>
+<p>Estes termos seguem a legislação brasileira, incluindo o Código de Defesa do Consumidor.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="mark" aria-hidden="true">figurinhas26copa</p>
+    <nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Trocas e reembolso</a></nav>
+    <p>Loja independente de revenda de figurinhas colecionáveis. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA ou por qualquer seleção. Marcas e nomes citados pertencem aos seus titulares e aparecem só para identificar os produtos.</p>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script>
+document.querySelectorAll("[data-contact]").forEach(function (el) {
+  var s = window.STORE, parts = [];
+  if (s.contactEmail) parts.push('<a href="mailto:' + s.contactEmail + '">' + s.contactEmail + '</a>');
+  if (s.contactWhatsapp) parts.push('WhatsApp ' + s.contactWhatsapp);
+  el.innerHTML = parts.length ? parts.join(" · ") : "os canais de atendimento informados no seu pedido";
+});
+</script>
+</body>
+</html>

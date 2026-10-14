@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidade · figurinhas26copa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="favicon.svg" alt=""><span>figurinhas26copa</span></a>
+    <nav>
+      <a href="./" class="hide-sm">Loja</a>
+      <a href="album.html">Álbum</a>
+      <a href="carrinho.html" class="cart-link">Carrinho <span class="cart-count" data-n="0">0</span></a>
+    </nav>
+  </div>
+</header>
+<main class="doc">
+<h1>Política de privacidade</h1>
+<p class="updated">Atualizado em 14 de outubro de 2026</p>
+<p>Explicamos aqui quais dados coletamos, por que e o que fazemos com eles, conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
+
+<h2>Dados que coletamos</h2>
+<ul>
+<li><strong>No pedido:</strong> nome completo, CPF, e-mail, celular e endereço de entrega.</li>
+<li><strong>No navegador:</strong> o carrinho fica salvo no seu próprio aparelho (armazenamento local do navegador) e não é enviado para nós enquanto você não fizer um pedido.</li>
+</ul>
+<p>Não usamos cookies de publicidade nem rastreadores de terceiros.</p>
+
+<h2>Para que usamos</h2>
+<ul>
+<li>Identificar o comprador e emitir o pedido.</li>
+<li>Entregar os produtos e falar com você sobre o pedido.</li>
+<li>Cumprir obrigações legais e fiscais.</li>
+</ul>
+
+<h2>Com quem compartilhamos</h2>
+<p>Somente com quem precisa dos dados para entregar o pedido: Correios ou Uber, conforme a entrega escolhida, e, quando houver, o meio de pagamento. Não vendemos seus dados.</p>
+
+<h2>Consulta de CEP</h2>
+<p>Ao digitar o CEP, o site consulta o serviço público ViaCEP para preencher o endereço. Só o CEP é enviado nessa consulta.</p>
+
+<h2>Por quanto tempo guardamos</h2>
+<p>Pelo tempo necessário para concluir o pedido, atender trocas e reembolsos e cumprir prazos legais.</p>
+
+<h2>Seus direitos</h2>
+<p>Você pode pedir acesso, correção ou exclusão dos seus dados, e saber com quem foram compartilhados. Fale com a gente por <span data-contact></span>.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="mark" aria-hidden="true">figurinhas26copa</p>
+    <nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Trocas e reembolso</a></nav>
+    <p>Loja independente de revenda de figurinhas colecionáveis. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA ou por qualquer seleção. Marcas e nomes citados pertencem aos seus titulares e aparecem só para identificar os produtos.</p>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script>
+document.querySelectorAll("[data-contact]").forEach(function (el) {
+  var s = window.STORE, parts = [];
+  if (s.contactEmail) parts.push('<a href="mailto:' + s.contactEmail + '">' + s.contactEmail + '</a>');
+  if (s.contactWhatsapp) parts.push('WhatsApp ' + s.contactWhatsapp);
+  el.innerHTML = parts.length ? parts.join(" · ") : "os canais de atendimento informados no seu pedido";
+});
+</script>
+</body>
+</html>

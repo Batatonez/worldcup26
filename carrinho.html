@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrinho · figurinhas26copa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="favicon.svg" alt=""><span>figurinhas26copa</span></a>
+    <nav>
+      <a href="./" class="hide-sm">Loja</a>
+      <a href="album.html">Álbum</a>
+      <a href="carrinho.html" class="cart-link" aria-current="page">Carrinho <span class="cart-count" data-n="0">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="view-cart">
+    <h1 class="h-l page-title">Carrinho</h1>
+
+    <div id="empty" class="empty" hidden>
+      <p>Seu carrinho está vazio.</p>
+      <a class="btn" href="album.html">Abrir o álbum</a>
+    </div>
+
+    <div id="filled" class="layout" hidden>
+      <section aria-labelledby="itens">
+        <h2 id="itens" class="sr">Itens</h2>
+        <ul class="lines" id="lines"></ul>
+        <button type="button" class="link-btn" id="clear">Esvaziar carrinho</button>
+      </section>
+
+      <form id="checkout" class="card" novalidate>
+        <h2 class="card-title">Dados para entrega</h2>
+
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input id="nome" name="nome" autocomplete="name" required>
+          <p class="err" data-for="nome"></p>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="cpf">CPF</label>
+            <input id="cpf" name="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required>
+            <p class="err" data-for="cpf"></p>
+          </div>
+          <div class="field">
+            <label for="tel">Celular</label>
+            <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(11) 91234-5678" maxlength="15" required>
+            <p class="err" data-for="tel"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="err" data-for="email"></p>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="cep">CEP</label>
+            <input id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required>
+            <p class="err" data-for="cep"></p>
+          </div>
+          <div class="field cep-status" id="cepStatus" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="rua">Endereço</label>
+          <input id="rua" name="rua" autocomplete="address-line1" required>
+          <p class="err" data-for="rua"></p>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="numero">Número</label>
+            <input id="numero" name="numero" autocomplete="off" required>
+            <p class="err" data-for="numero"></p>
+          </div>
+          <div class="field">
+            <label for="compl">Complemento <span class="opt">opcional</span></label>
+            <input id="compl" name="compl" autocomplete="address-line2">
+          </div>
+        </div>
+        <div class="field">
+          <label for="bairro">Bairro</label>
+          <input id="bairro" name="bairro" required>
+          <p class="err" data-for="bairro"></p>
+        </div>
+        <div class="grid2 city">
+          <div class="field">
+            <label for="cidade">Cidade</label>
+            <input id="cidade" name="cidade" autocomplete="address-level2" required>
+            <p class="err" data-for="cidade"></p>
+          </div>
+          <div class="field">
+            <label for="uf">UF</label>
+            <select id="uf" name="uf" autocomplete="address-level1" required>
+              <option value="">—</option>
+            </select>
+            <p class="err" data-for="uf"></p>
+          </div>
+        </div>
+
+        <fieldset class="ship">
+          <legend>Entrega</legend>
+          <label class="opt-card"><input type="radio" name="entrega" value="Correios" required><span><b>Correios</b><small>Para todo o Brasil</small></span></label>
+          <label class="opt-card"><input type="radio" name="entrega" value="Uber Flash"><span><b>Uber Flash</b><small>Entrega no mesmo dia, na região da loja</small></span></label>
+          <p class="err" data-for="entrega"></p>
+        </fieldset>
+
+        <label class="agree"><input type="checkbox" id="aceite" name="aceite" required> <span>Li e aceito os <a href="termos.html" target="_blank">termos de uso</a> e a <a href="reembolso.html" target="_blank">política de trocas e reembolso</a>.</span></label>
+        <p class="err" data-for="aceite"></p>
+
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+          <div><span>Frete</span><span>Calculado à parte</span></div>
+        </div>
+        <button class="btn full" type="submit">Revisar pedido</button>
+        <p class="fine">O frete não está incluído no valor e é combinado depois do pedido.</p>
+      </form>
+    </div>
+  </div>
+
+  <div id="view-done" hidden>
+    <h1 class="h-l page-title">Resumo do pedido</h1>
+    <div class="card summary" id="summary"></div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="mark" aria-hidden="true">figurinhas26copa</p>
+    <nav><a href="termos.html">Termos de uso</a><a href="privacidade.html">Privacidade</a><a href="reembolso.html">Trocas e reembolso</a></nav>
+    <p>Loja independente de revenda de figurinhas colecionáveis. Não somos afiliados, patrocinados nem endossados pela Panini, pela FIFA ou por qualquer seleção. Marcas e nomes citados pertencem aos seus titulares e aparecem só para identificar os produtos.</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
