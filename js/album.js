@@ -243,7 +243,7 @@
   function coverFront() {
     const pg = h("div", "pg cover-art");
     if (IMG.cover) {
-      pg.innerHTML = `<img class="photo" src="img/capa-dura.jpg" alt="Capa do álbum, edição brasileira capa dura">`;
+      pg.innerHTML = `<img class="photo" src="img/covers/br-capa-dura.webp" alt="Capa do álbum, edição brasileira capa dura">`;
     } else {
       pg.innerHTML = `<div class="blkA"></div><div class="blkB"></div><div class="blkC"></div>` +
         `<div class="ct"><b>26</b><span>Álbum de figurinhas<br>Copa do Mundo 2026</span><small>Edição brasileira · capa dura</small></div>`;

@@ -98,8 +98,8 @@ def fetch_cover():
     dst = [(0, 0), (W, 0), (W, H), (0, H)]
     coeffs = perspective_coeffs(dst, src)
     out = im.transform((W, H), Image.PERSPECTIVE, coeffs, Image.BICUBIC)
-    out.save(os.path.join(ROOT, "img/capa-dura.jpg"), "JPEG", quality=86)
-    print("capa: img/capa-dura.jpg")
+    out.save(os.path.join(ROOT, "img/covers/br-capa-dura.webp"), "WEBP", quality=86)
+    print("capa: img/covers/br-capa-dura.webp")
 
 
 def perspective_coeffs(dst, src):
@@ -135,7 +135,7 @@ def write_manifest():
     have = sorted((c for c in have if c in order), key=order.get)
     m = {
         "stickers": have,
-        "cover": os.path.exists(os.path.join(ROOT, "img/capa-dura.jpg")),
+        "cover": os.path.exists(os.path.join(ROOT, "img/covers/br-capa-dura.webp")),
         "wood": os.path.exists(os.path.join(ROOT, "img/wood.jpg")),
     }
     open(os.path.join(ROOT, "js/images.js"), "w").write(
